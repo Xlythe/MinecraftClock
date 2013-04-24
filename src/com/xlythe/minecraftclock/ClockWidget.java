@@ -42,7 +42,10 @@ public class ClockWidget extends AppWidgetProvider {
 
         remoteViews.setBitmap(R.id.dial, "setImageBitmap", getCurrentTimeAsBitmap(context));
 
-        appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
+        try {
+            appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
+        }
+        catch(Exception e) {}
     }
 
     private PendingIntent createClockTickIntent(Context context) {
@@ -75,7 +78,10 @@ public class ClockWidget extends AppWidgetProvider {
 
         int x = (b.getWidth() - defaultDial.getWidth()) / 2;
         int y = (b.getHeight() - defaultDial.getHeight()) / 2;
-        Bitmap croppedBmp = Bitmap.createBitmap(b, x, y, defaultDial.getWidth(), defaultDial.getHeight());
+
+        Bitmap croppedBmp;
+        if(x > 0 && y > 0) croppedBmp = Bitmap.createBitmap(b, x, y, defaultDial.getWidth(), defaultDial.getHeight());
+        else croppedBmp = b;
 
         return croppedBmp;
     }
