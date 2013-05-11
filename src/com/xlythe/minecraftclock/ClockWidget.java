@@ -56,7 +56,7 @@ public class ClockWidget extends AppWidgetProvider {
     public void onEnabled(Context context) {
         super.onEnabled(context);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC, System.currentTimeMillis() + 1000, 1000, createClockTickIntent(context));
+        alarmManager.setRepeating(AlarmManager.RTC, System.currentTimeMillis() + 1000, 300000, createClockTickIntent(context));
     }
 
     @Override
