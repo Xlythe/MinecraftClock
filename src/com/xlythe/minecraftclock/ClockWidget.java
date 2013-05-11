@@ -68,9 +68,11 @@ public class ClockWidget extends AppWidgetProvider {
 
     private static Bitmap getCurrentTimeAsBitmap(Context context) {
         final int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        final int minute = Calendar.getInstance().get(Calendar.MINUTE);
         final Bitmap defaultDial = BitmapFactory.decodeResource(context.getResources(), R.drawable.dial);
         final Matrix matrix = new Matrix();
         float degrees = (hour - 12) * 15;
+        degrees += minute / 4;
 
         matrix.postRotate(degrees);
 
