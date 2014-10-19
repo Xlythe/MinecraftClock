@@ -18,3 +18,13 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+
+build/
+.idea/
+.gradle/
+gradle/
+
+*.iml
+
+gradlew
+gradlew.bat
